@@ -1,0 +1,47 @@
+<programa> ::= <classificacao> | <url>
+
+<classificacao> ::= <lista_classificacoes>
+<lista_classificacoes> ::= <classificacao_item> <lista_classificacoes> | ε
+<classificacao_item> ::= <autor> | <titulo> | <assunto> | <nomes> | <desconhecido>
+
+<autor> ::= "autor" <palavra> <termos_relacionados>
+<titulo> ::= "titulo" <palavra> <termos_relacionados>
+<assunto> ::= "assunto" <palavra> <termos_relacionados>
+
+<termos_relacionados> ::= (<desconhecido> | <nomes>) <palavra> <termos_relacionados> | ε
+
+<nomes> ::= "nomes" <palavra> <nomes_opcional>
+<nomes_opcional> ::= ("desconhecido" | "nomes") <palavra> <nomes_opcional> | ε
+
+<desconhecido> ::= "desconhecido" <palavra> <definir_tipo> <continuacao_desconhecido>
+<definir_tipo> ::= "autor" | "titulo" | "assunto"
+<continuacao_desconhecido> ::= "desconhecido" <palavra> <continuacao_desconhecido> | ε
+
+<url> ::= <base_url> <parametros>
+<base_url> ::= "https://catalogobiblioteca.ufmg.br/pesquisa_avancada?"
+<parametros> ::= <parametro> <parametros_continuacao> "&keyword_type=P"
+<parametros_continuacao> ::= "&" <parametro> <parametros_continuacao> | ε
+
+<parametro> ::= <tipo_parametro> | <condicao>
+<tipo_parametro> ::= "for" <indice> "=" <tipo> "&q" <indice> "=" <palavra_codificada>
+<condicao> ::= "condition" <indice_condicao> "=" ("AND" | "OR")
+
+<indice> ::= <digito> | ε
+<indice_condicao> ::= <digito> | ε
+
+<tipo> ::= "AUTOR" | "TITULO" | "ASSUNTO"
+
+<palavra_codificada> ::= <palavra>
+
+<palavra> ::= <caractere> <palavra> | ε
+
+<caractere> ::= "a" | "b" | ... | "z" 
+               | "A" | "B" | ... | "Z" 
+               | "0" | ... | "9" 
+               | "á" | "à" | "â" | "ã" | "é" | "è" | "ê" | "í" | "ì" | "î" 
+               | "ó" | "ò" | "ô" | "õ" | "ú" | "ù" | "û" | "ç" 
+               | "Á" | "À" | "Â" | "Ã" | "É" | "È" | "Ê" | "Í" | "Ì" | "Î" 
+               | "Ó" | "Ò" | "Ô" | "Õ" | "Ú" | "Ù" | "Û" | "Ç"
+               | "-" | "_" | "." | " " 
+               
+<digito> ::= "1" | "2" | ... | "9"

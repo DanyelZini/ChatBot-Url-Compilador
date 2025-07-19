@@ -1,0 +1,4 @@
+nomes=nomes.txt
+autor=autor.txt
+titulo=titulo.txt
+assunto=assunto.txt
