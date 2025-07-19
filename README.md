@@ -113,6 +113,12 @@ Foi utilizado no projeto o **Python 3.12.3**, para evitar possiveis erros utiliz
 ### 📂 Clonar o repositório
 Primeiro, clone este repositório:
 ```bash
-git clone <url-do-repositorio>
-cd <pasta-do-repositorio>
+git clone <https://github.com/DanyelZini/ChatBot-Url-Compilador.git>
+cd ChatBot-Url-Compilador/
+```
+
+E execute o arquivo:
+>Main.py
+
+
 
